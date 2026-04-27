@@ -10,7 +10,7 @@ Download `semtx.css` and include it in your HTML:
 <link rel="stylesheet" href="semtx.css">
 ```
 
-For usage examples, visit <a href=""semtx.org"> semtx.org</a>
+For usage examples, visit <a href="https://semtx.org"> semtx.org</a>
 
 
 ## License
