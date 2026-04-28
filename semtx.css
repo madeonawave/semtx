@@ -1,4 +1,4 @@
-/* semtx - Minimal CSS framework for HTMX */
+/* semtx - CSS library for the modern web */
 
 /* ============================================
    CSS CUSTOM PROPERTIES
@@ -75,7 +75,8 @@
 }
 
 /* Dark Theme */
-:root.dark {
+:root.dark,
+:root:not(.light) {
   --primary: oklch(0.87 0.04 96.18);
   --primary-rgb: rgb(112 91 155);
   --on-primary: oklch(21% 3% 284deg);
@@ -98,33 +99,6 @@
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
   --shadow: 0 4px 6px rgba(0,0,0,0.3);
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.3);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --primary: oklch(0.87 0.04 96.18);
-    --primary-rgb: rgb(112 91 155);
-    --on-primary: oklch(21% 3% 284deg);
-    --text: oklch(88% 4% 272deg);
-    --text-sub: oklch(82% 4% 273deg);
-    --bg-base: oklch(24% 3% 284deg);
-    --bg-mantle: oklch(22% 3% 284deg);
-    --bg-surface: oklch(32% 3% 282deg);
-    --bg-overlay: oklch(39% 3% 276deg);
-    --border: oklch(32% 3% 282deg);
-
-    --red: oklch(76% 18% 3deg);
-    --peach: oklch(82% 15% 53deg);
-    --yellow: oklch(92% 12% 87deg);
-    --green: oklch(86% 16% 143deg);
-    --teal: oklch(86% 14% 183deg);
-    --sky: oklch(85% 14% 210deg);
-    --blue: oklch(77% 16% 260deg);
-
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-    --shadow: 0 4px 6px rgba(0,0,0,0.3);
-    --shadow-lg: 0 10px 15px rgba(0,0,0,0.3);
-  }
 }
 
 /* ============================================
@@ -711,6 +685,12 @@ ul, ol {
   height: 1em;
 }
 
+/* Active/pressed state */
+.btn:active {
+  color: var(--on-primary);
+  filter: brightness(0.8);
+}
+
 /* Button Loading State */
 .btn.loading {
   position: relative;
@@ -750,7 +730,7 @@ ul, ol {
   padding: var(--space-2) var(--space-3);
   font-size: var(--fs-base);
   color: var(--text);
-  background: var(--bg-mantle);
+  background: var(--bg-base);
   border: var(--border-w) solid var(--border);
   border-radius: var(--radius);
   transition: all var(--trans-fast);
@@ -913,6 +893,7 @@ ul, ol {
   border: var(--border-w) solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
+  margin-top: var(--space-4);
   overflow: hidden;
 }
 
@@ -920,6 +901,7 @@ ul, ol {
   box-shadow: none;
   background: var(--bg-mantle);
   padding: var(--space-4);
+  margin-top: var(--space-4);
   border-radius: var(--radius);
 }
 
@@ -1270,11 +1252,17 @@ ul, ol {
   display: flex;
 }
 
+/* Shared backdrop styles */
+.modal-backdrop,
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(1px);
+}
+
+/* Position only for modal-backdrop */
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(1px);
 }
 
 .modal-content {
@@ -1336,6 +1324,93 @@ ul, ol {
 .modal-full .modal-content {
   max-width: calc(100vw - var(--space-8));
   max-height: calc(100vh - var(--space-8));
+}
+
+/* ============================================
+   HTML5 DIALOG (reusing modal styles)
+   ============================================ */
+
+/* Shared modal/dialog content */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: var(--container-md);
+  max-height: calc(100vh - var(--space-8));
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* HTML5 dialog content - no display rule, uses browser default (hidden until shown) */
+dialog {
+  position: relative;
+  width: 100%;
+  max-width: var(--container-md);
+  max-height: calc(100vh - var(--space-8));
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* Shared header styles */
+.modal-header,
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4);
+  border-bottom: var(--border-w) solid var(--border);
+  font-weight: 600;
+  font-size: var(--fs-lg);
+}
+
+/* Shared body styles */
+.modal-body,
+.dialog-body {
+  padding: var(--space-4);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Shared footer styles */
+.modal-footer,
+.dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-top: var(--border-w) solid var(--border);
+  background: var(--bg-mantle);
+}
+
+/* Dialog specific (positioning) */
+dialog {
+  margin: auto;
+  position: fixed;
+  inset: 0;
+  border: none;
+}
+
+/* Dialog close button (reuse modal-close) */
+.dialog-close,
+dialog .modal-close {
+  padding: var(--space-2);
+  background: transparent;
+  border: none;
+  color: var(--text-sub);
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all var(--trans-fast);
+}
+.dialog-close:hover,
+dialog .modal-close:hover {
+  background: var(--bg-overlay);
+  color: var(--text);
 }
 
 /* ============================================
@@ -1573,6 +1648,7 @@ pre {
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
   padding: var(--space-4);
+  margin-top: var(--space-4);
   background: var(--bg-surface);
   border-radius: var(--radius);
   overflow-x: auto;
