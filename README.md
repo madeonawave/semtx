@@ -20,6 +20,10 @@ Download `semtx.css` and include it in your HTML:
 For usage examples, visit <a href="https://semtx.org"> semtx.org</a>
 
 
-## License
+## Contributors
+We welcome contributions from developers of all skill levels! If you're interested in improving the Semtx CSS project, feel free to fork the repository, make your changes, and submit a pull request.
+If you have requests for new features or changes, just create a new Issue.
 
-MIT
+
+## License
+GPL-3.0 license
