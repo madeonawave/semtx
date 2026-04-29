@@ -7,7 +7,7 @@ Semantic CSS library for the modern web
 Use CDN:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/madeonawave/semtx@main/semtx.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/madeonawave/semtx@latest/semtx.css">
 ```
 
 Or, 
