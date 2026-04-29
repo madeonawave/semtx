@@ -162,6 +162,8 @@ ul, ol {
   list-style-position: inside;
 }
 
+
+
 /* ============================================
    UTILITY CLASSES
    ============================================ */
@@ -492,6 +494,7 @@ ul, ol {
 /* Container */
 .container {
   width: 100%;
+  box-sizing: border-box;
   max-width: var(--container-lg);
   margin-left: auto;
   margin-right: auto;
@@ -1007,6 +1010,59 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+}
+
+/* Navbar Toggle (hamburger) */
+.navbar-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: var(--space-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+}
+.navbar-toggle:hover {
+  background: var(--bg-overlay);
+}
+.navbar-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  position: relative;
+  transition: all var(--trans-fast);
+}
+.navbar-toggle span::before,
+.navbar-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  transition: all var(--trans-fast);
+}
+.navbar-toggle span::before { top: -8px; }
+.navbar-toggle span::after { top: 8px; }
+
+.navbar-toggle.active span {
+  background: transparent;
+}
+.navbar-toggle.active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.navbar-toggle.active span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* Navbar Collapse */
+.navbar-collapse {
+  display: flex;
+  align-items: center;
 }
 
 /* Tabs */
@@ -1788,6 +1844,57 @@ hr {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+@media (max-width: 640px) {
+  .two-col, .two-column, .two-col-sm,
+  .three-col, .three-column, .three-col-sm {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-layout {
+    flex-direction: column;
+  }
+
+  /* Navbar mobile */
+  .navbar {
+    flex-wrap: wrap;
+  }
+  .navbar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar-collapse {
+    display: none;
+    width: 100%;
+    order: 3;
+    padding-top: var(--space-2);
+  }
+  .navbar-collapse.active {
+    display: block;
+  }
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar-nav li {
+    width: 100%;
+  }
+  .navbar-nav a,
+  .navbar-nav button {
+    display: block;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+  }
+}
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+* {
+  min-width: 0; /* prevents flex/grid children from overflowing */
 }
 
 /* ============================================
