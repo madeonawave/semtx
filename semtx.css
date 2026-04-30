@@ -99,6 +99,7 @@
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
   --shadow: 0 4px 6px rgba(0,0,0,0.3);
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.3);
+  --button-text:oklch(0.33 0.01 0);
 }
 
 /* ============================================
@@ -579,7 +580,7 @@ ul, ol {
 /* ============================================
    BUTTONS
    ============================================ */
-.btn {
+button, .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -588,7 +589,7 @@ ul, ol {
   font-size: var(--fs-sm);
   font-weight: 500;
   line-height: 1;
-  border: var(--border-w) solid transparent;
+  border: var(--border-w) solid var(--bg-surface);
   border-radius: var(--radius);
   cursor: pointer;
   transition: all var(--trans-fast);
@@ -596,19 +597,26 @@ ul, ol {
   text-decoration: none;
   min-height: 44px;
   min-width: 44px;
+  color: var(--button-text);
 }
+button:hover,
 .btn:hover {
   text-decoration: none;
 }
+button:focus-visible,
 .btn:focus-visible {
   outline: var(--border-w-2) solid var(--primary);
   outline-offset: 2px;
 }
+button:disabled,
+button.disabled,
 .btn:disabled,
 .btn.disabled {
-  opacity: 0.5;
+  opacity: 0.8;
   cursor: not-allowed;
   pointer-events: none;
+  color: var(--text);
+  background: var(--bg-surface);
 }
 
 /* Button Variants */
@@ -617,7 +625,7 @@ ul, ol {
   color: var(--on-primary);
   border-color: var(--primary);
 }
-.btn-primary:hover {
+button:hover {
   filter: brightness(1.1);
 }
 
@@ -636,8 +644,8 @@ ul, ol {
   border-color: var(--border);
 }
 .btn-outline:hover {
-  background: var(--primary);
-  color: var(--on-primary);
+  background: var(--bg-surface);
+  color: var(--text);
 }
 
 .btn-ghost {
@@ -653,9 +661,6 @@ ul, ol {
   background: var(--red);
   color: oklch(100% 0% 0deg);
   border-color: var(--red);
-}
-.btn-danger:hover {
-  filter: brightness(1.1);
 }
 
 .btn-link {
@@ -689,17 +694,17 @@ ul, ol {
 }
 
 /* Active/pressed state */
-.btn:active {
+button:active {
   color: var(--on-primary);
   filter: brightness(0.8);
 }
 
 /* Button Loading State */
-.btn.loading {
+button.loading {
   position: relative;
   color: transparent;
 }
-.btn.loading::after {
+button.loading::after {
   content: "";
   position: absolute;
   width: 1em;
@@ -838,6 +843,7 @@ ul, ol {
   border: var(--border-w) solid var(--border);
   border-radius: var(--radius-full);
   transition: all var(--trans);
+  margin-bottom: var(--space-1);
 }
 .switch-track::after {
   content: "";
@@ -1084,6 +1090,7 @@ ul, ol {
   transition: all var(--trans-fast);
   cursor: pointer;
   white-space: nowrap;
+  border-radius: unset;
 }
 
 .tab:hover {
@@ -1686,10 +1693,12 @@ p {
 }
 
 blockquote {
-  padding-left: var(--space-4);
+  padding: var(--space-4);
   border-left: 3px solid var(--primary);
   font-style: italic;
   color: var(--text-sub);
+  margin-bottom: var(--space-4);
+  background-color: var(--bg-mantle);
 }
 
 code {
@@ -2276,6 +2285,55 @@ figcaption {
   font-size: var(--fs-sm);
   color: var(--text-sub);
   margin-top: var(--space-2);
+}
+
+/* Details & Summary */
+details {
+  background: var(--bg-surface);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  border: var(--border-w) solid var(--border);
+}
+
+details[open] {
+  padding-bottom: var(--space-4);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: var(--fw-semibold, 600);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  outline: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: "▶";
+  font-size: var(--fs-xs);
+  transition: transform var(--trans-fast);
+  color: var(--text-sub);
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+summary:hover {
+  color: var(--primary);
+}
+
+details p,
+details ul,
+details ol {
+  margin: var(--space-3) 0 0 0;
+  color: var(--text-sub);
 }
 
 /* ============================================
