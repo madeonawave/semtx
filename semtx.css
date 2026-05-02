@@ -5,25 +5,26 @@
    ============================================ */
 :root {
   /* Color - Light Theme (Latte) */
-  --primary: oklch(0.52 0.1 297.52);
-  --primary-rgb: rgb(112 91 155);
-  --on-primary: oklch(100% 0% 0deg);
-  --text: oklch(44% 4% 279deg);
-  --text-sub: oklch(49% 4% 279deg);
-  --bg-base: oklch(96% 1% 265deg);
-  --bg-mantle: oklch(93% 1% 265deg);
-  --bg-surface: oklch(89% 1% 268deg);
-  --bg-overlay: oklch(81% 2% 271deg);
-  --border: oklch(86% 1% 268deg);
+  --primary: light-dark(oklch(0.52 0.1 297.52), oklch(0.87 0.04 96.18));
+  --primary-rgb: light-dark(rgb(112 91 155), rgb(112 91 155));
+  --on-primary: light-dark(oklch(100% 0% 0deg), oklch(21% 3% 284deg));
+  --text: light-dark(oklch(44% 4% 279deg), oklch(88% 4% 272deg));
+  --text-sub: light-dark(oklch(49% 4% 279deg), oklch(82% 4% 273deg));
+  --bg-base: light-dark(oklch(96% 1% 265deg), oklch(24% 3% 284deg));
+  --bg-mantle: light-dark(oklch(93% 1% 265deg), oklch(22% 3% 284deg));
+  --bg-surface: light-dark(oklch(89% 1% 268deg), oklch(32% 3% 282deg));
+  --bg-overlay: light-dark(oklch(81% 2% 271deg), oklch(39% 3% 276deg));
+  --border: light-dark(oklch(86% 1% 268deg), oklch(32% 3% 282deg));
+  --button-text: light-dark(#fff, oklch(0.33 0.01 0));
 
   /* Accent Colors */
-  --red: oklch(55% 28% 20deg);
-  --peach: oklch(69% 26% 42deg);
-  --yellow: oklch(71% 20% 68deg);
-  --green: oklch(63% 24% 140deg);
-  --teal: oklch(60% 16% 201deg);
-  --sky: oklch(68% 18% 235deg);
-  --blue: oklch(56% 28% 262deg);
+  --red: light-dark(oklch(55% 28% 20deg), oklch(0.54 0.12 5.88));
+  --peach: light-dark(oklch(69% 26% 42deg), oklch(82% 15% 53deg));
+  --yellow: light-dark(oklch(71% 20% 68deg), oklch(92% 12% 87deg));
+  --green: light-dark(oklch(63% 24% 140deg), oklch(86% 16% 143deg));
+  --teal: light-dark(oklch(60% 16% 201deg), oklch(86% 14% 183deg));
+  --sky: light-dark(oklch(68% 18% 235deg), oklch(85% 14% 210deg));
+  --blue: light-dark(oklch(56% 28% 262deg), oklch(77% 16% 260deg));
 
   /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -58,9 +59,9 @@
   --border-w-2: 2px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow: 0 4px 6px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-sm: 0 1px 2px light-dark(rgba(0,0,0,0.05), rgba(0,0,0,0.2));
+  --shadow: 0 4px 6px light-dark(rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+  --shadow-lg: 0 10px 15px light-dark(rgba(0,0,0,0.1), rgba(0,0,0,0.3));
 
   /* Transitions */
   --trans: 200ms ease;
@@ -72,34 +73,6 @@
   --container-md: 768px;
   --container-lg: 1024px;
   --container-xl: 1280px;
-}
-
-/* Dark Theme */
-:root.dark,
-:root:not(.light) {
-  --primary: oklch(0.87 0.04 96.18);
-  --primary-rgb: rgb(112 91 155);
-  --on-primary: oklch(21% 3% 284deg);
-  --text: oklch(88% 4% 272deg);
-  --text-sub: oklch(82% 4% 273deg);
-  --bg-base: oklch(24% 3% 284deg);
-  --bg-mantle: oklch(22% 3% 284deg);
-  --bg-surface: oklch(32% 3% 282deg);
-  --bg-overlay: oklch(39% 3% 276deg);
-  --border: oklch(32% 3% 282deg);
-
-  --red: oklch(0.54 0.12 5.88);
-  --peach: oklch(82% 15% 53deg);
-  --yellow: oklch(92% 12% 87deg);
-  --green: oklch(86% 16% 143deg);
-  --teal: oklch(86% 14% 183deg);
-  --sky: oklch(85% 14% 210deg);
-  --blue: oklch(77% 16% 260deg);
-
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-  --shadow: 0 4px 6px rgba(0,0,0,0.3);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.3);
-  --button-text:oklch(0.33 0.01 0);
 }
 
 /* ============================================
