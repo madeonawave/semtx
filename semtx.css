@@ -4,9 +4,16 @@
    CSS CUSTOM PROPERTIES
    ============================================ */
 :root {
+  color-scheme: light dark; /* OS default */
+}
+
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"]  { color-scheme: dark; }
+
+:root {
   /* Color - Light Theme (Latte) */
   --primary: light-dark(oklch(0.52 0.1 297.52), oklch(0.87 0.04 96.18));
-  --primary-rgb: light-dark(rgb(112 91 155), rgb(112 91 155));
+  --primary-rgb: light-dark(rgb(112 91 155), rgb(220, 213, 183));
   --on-primary: light-dark(oklch(100% 0% 0deg), oklch(21% 3% 284deg));
   --text: light-dark(oklch(44% 4% 279deg), oklch(88% 4% 272deg));
   --text-sub: light-dark(oklch(49% 4% 279deg), oklch(82% 4% 273deg));
