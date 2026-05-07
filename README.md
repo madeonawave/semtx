@@ -1,6 +1,9 @@
 # semtx
 
-Semantic CSS library for the modern web
+Semantic CSS library for the modern web.
+
+<a href="https://semtx.org"> semtx.org</a>
+
 
 ## Quick Start
 
