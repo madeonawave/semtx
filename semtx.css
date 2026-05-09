@@ -22,7 +22,7 @@
   --bg-surface: light-dark(oklch(89% 1% 268deg), oklch(32% 3% 282deg));
   --bg-overlay: light-dark(oklch(81% 2% 271deg), oklch(39% 3% 276deg));
   --border: light-dark(oklch(86% 1% 268deg), oklch(32% 3% 282deg));
-  --button-text: light-dark(#fff, oklch(0.33 0.01 0));
+  --button-text: light-dark(oklch(44%, 4%, 279deg), oklch(32% 3% 282deg));
 
   /* Accent Colors */
   --red: light-dark(oklch(55% 28% 20deg), oklch(0.54 0.12 5.88));
