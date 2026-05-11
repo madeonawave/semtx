@@ -706,38 +706,43 @@ button.loading::after {
   margin-bottom: var(--space-4);
 }
 
-.form-label {
+label {
   font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--text);
 }
 
-.form-input {
+input, select, textarea {
   display: block;
   width: 100%;
   padding: var(--space-2) var(--space-3);
   font-size: var(--fs-base);
   color: var(--text);
-  background: var(--bg-base);
   border: var(--border-w) solid var(--border);
   border-radius: var(--radius);
   transition: all var(--trans-fast);
   min-height: 44px;
 }
-.form-input::placeholder {
+input::placeholder {
   color: var(--text-sub);
   opacity: 0.7;
 }
-.form-input:hover {
+input:hover {
   border-color: var(--text-sub);
 }
-.form-input:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 30%, transparent);
 }
-.form-input:disabled,
-.form-input.disabled {
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: none;
+  border-color: var(--border);
+  box-shadow: none;
+}
+input:disabled,
+input.disabled {
   opacity: 0.5;
   cursor: not-allowed;
   background: var(--bg-surface);
@@ -783,6 +788,14 @@ button.loading::after {
   background-repeat: no-repeat;
   background-position: right var(--space-3) center;
   padding-right: var(--space-8);
+}
+
+@media (max-width: 640px) {
+  .select {
+    appearance: auto;
+    background-image: none;
+    padding-right: var(--space-3);
+  }
 }
 
 /* Checkbox & Radio */
@@ -1685,7 +1698,7 @@ code {
   font-family: var(--font-mono);
   font-size: 0.875em;
   padding: 2px 6px;
-  background: var(--bg-surface);
+  background: var(--bg-mantle);
   border-radius: var(--radius-sm);
 }
 
