@@ -21,6 +21,7 @@
   --bg-mantle: light-dark(oklch(93% 1% 265deg), oklch(22% 3% 284deg));
   --bg-surface: light-dark(oklch(89% 1% 268deg), oklch(32% 3% 282deg));
   --bg-overlay: light-dark(oklch(81% 2% 271deg), oklch(39% 3% 276deg));
+  --bg-field: light-dark(oklch(1 0 0), oklch(0.25 0 0 ));
   --border: light-dark(oklch(86% 1% 268deg), oklch(32% 3% 282deg));
   --button-text: light-dark(oklch(44%, 4%, 279deg), oklch(32% 3% 282deg));
 
@@ -722,6 +723,7 @@ input, select, textarea {
   border-radius: var(--radius);
   transition: all var(--trans-fast);
   min-height: 44px;
+  background-color: var(--bg-field);
 }
 input::placeholder {
   color: var(--text-sub);
@@ -782,20 +784,12 @@ input.disabled {
 }
 
 /* Select */
-.select {
+select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235c5f77' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right var(--space-3) center;
   padding-right: var(--space-8);
-}
-
-@media (max-width: 640px) {
-  .select {
-    appearance: auto;
-    background-image: none;
-    padding-right: var(--space-3);
-  }
 }
 
 /* Checkbox & Radio */
