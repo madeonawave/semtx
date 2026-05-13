@@ -397,6 +397,18 @@ ul, ol {
 .text-error { color: var(--red); }
 .text-warning { color: var(--peach); }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Semantic Text Colors */
 .text-blue { color: var(--blue); }
 .text-green { color: var(--green); }
@@ -812,6 +824,19 @@ select {
   cursor: not-allowed;
 }
 
+/* Fieldset */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+fieldset legend {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text);
+  padding: 0 0 var(--space-2);
+}
+
 /* Switch */
 .switch {
   display: flex;
@@ -820,7 +845,21 @@ select {
   cursor: pointer;
 }
 .switch input[type="checkbox"] {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Switch focus state - visible when keyboard navigating */
+.switch input[type="checkbox"]:focus-visible + .switch-track {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-offset);
 }
 .switch-track {
   position: relative;
@@ -1286,112 +1325,11 @@ select {
 }
 
 /* ============================================
-   MODALS
+   HTML5 DIALOG
    ============================================ */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-4);
-}
-
-.modal.open {
-  display: flex;
-}
-
-/* Shared backdrop styles */
-.modal-backdrop,
-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(1px);
-}
-
-/* Position only for modal-backdrop */
-.modal-backdrop {
-  position: absolute;
-  inset: 0;
-}
-
-.modal-content {
-  position: relative;
-  width: 100%;
-  max-width: var(--container-md);
-  max-height: calc(100vh - var(--space-8));
-  background: var(--bg-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+html:has(dialog[open]:modal) {
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-4);
-  border-bottom: var(--border-w) solid var(--border);
-  font-weight: 600;
-  font-size: var(--fs-lg);
-}
-
-.modal-close {
-  padding: var(--space-2);
-  background: transparent;
-  border: none;
-  color: var(--text-sub);
-  cursor: pointer;
-  border-radius: var(--radius);
-  transition: all var(--trans-fast);
-}
-.modal-close:hover {
-  background: var(--bg-overlay);
-  color: var(--text);
-}
-
-.modal-body {
-  padding: var(--space-4);
-  overflow-y: auto;
-  flex: 1;
-}
-
-.modal-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  border-top: var(--border-w) solid var(--border);
-  background: var(--bg-mantle);
-}
-
-/* Modal Sizes */
-.modal-sm .modal-content { max-width: 400px; }
-.modal-lg .modal-content { max-width: 800px; }
-.modal-full .modal-content {
-  max-width: calc(100vw - var(--space-8));
-  max-height: calc(100vh - var(--space-8));
-}
-
-/* ============================================
-   HTML5 DIALOG (reusing modal styles)
-   ============================================ */
-
-/* Shared modal/dialog content */
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  max-width: var(--container-md);
-  max-height: calc(100vh - var(--space-8));
-  background: var(--bg-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
+  scrollbar-gutter: stable;
 }
 
 /* HTML5 dialog content - no display rule, uses browser default (hidden until shown) */
@@ -1446,6 +1384,12 @@ dialog {
   border: none;
 }
 
+/* Dialog backdrop */
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
 /* Dialog close button (reuse modal-close) */
 .dialog-close,
 dialog .modal-close {
@@ -1461,6 +1405,18 @@ dialog .modal-close {
 dialog .modal-close:hover {
   background: var(--bg-overlay);
   color: var(--text);
+}
+
+/* Dialog sizes */
+dialog.dialog-sm {
+  max-width: 400px;
+}
+dialog.dialog-lg {
+  max-width: 800px;
+}
+dialog.dialog-full {
+  max-width: calc(100vw - var(--space-8));
+  max-height: calc(100vh - var(--space-8));
 }
 
 /* ============================================
