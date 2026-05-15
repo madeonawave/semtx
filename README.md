@@ -22,6 +22,10 @@ Download `semtx.css` and include it in your HTML:
 
 For usage examples, visit <a href="https://semtx.org"> semtx.org</a>
 
+#### NPM?
+Where is the NPM package? 
+... NPM is currently not secure. Once they fixed their issues, we might use NPM distribution. 
+
 
 ## Contributors
 We welcome contributions from developers of all skill levels! If you're interested in improving the Semtx CSS project, feel free to fork the repository, make your changes, and submit a pull request.
