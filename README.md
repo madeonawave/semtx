@@ -33,4 +33,4 @@ If you have requests for new features or changes, just create a new Issue.
 
 
 ## License
-GPL-3.0 license
+MIT License
