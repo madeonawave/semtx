@@ -1149,29 +1149,29 @@ fieldset legend {
 .breadcrumb-item {
   display: flex;
   align-items: center;
-}
+  .separator {
+    color: var(--text-sub);
+    margin: 0 var(--space-1);
+  }
 
-.breadcrumb-item .separator {
-  color: var(--text-sub);
-  margin: 0 var(--space-1);
-}
+  &:not(:last-child)::after {
+    display: none;
+  }
 
-.breadcrumb-item:not(:last-child)::after {
-  display: none;
-}
+  a {
+    color: var(--text-sub);
+    &:hover { color: var(--primary); }
+  }
+  span {
+    color: var(--text);
+  }
 
-.breadcrumb a {
-  color: var(--text-sub);
-  &:hover { color: var(--primary); }
-}
-.breadcrumb span {
-  color: var(--text);
-}
-.breadcrumb-item.active span,
-.breadcrumb-item.active a {
-  color: var(--text);
-  font-weight: 500;
-  text-decoration: underline;
+  &.active span,
+  &.active a {
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: underline;
+  }
 }
 
 /* Pagination */
