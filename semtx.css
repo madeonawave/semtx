@@ -1276,33 +1276,20 @@ fieldset legend {
   margin-bottom: var(--space-1);
 }
 
-.alert-info {
-  background: color-mix(in oklch, var(--blue) 15%, transparent);
-  border-color: var(--blue);
-  color: var(--blue);
-}
-.alert-info .alert-icon { color: var(--blue); }
-
-.alert-success {
-  background: color-mix(in oklch, var(--green) 15%, transparent);
-  border-color: var(--green);
-  color: var(--green);
-}
-.alert-success .alert-icon { color: var(--green); }
-
-.alert-warning {
-  background: color-mix(in oklch, var(--peach) 15%, transparent);
-  border-color: var(--peach);
-  color: var(--peach);
-}
-.alert-warning .alert-icon { color: var(--peach); }
-
+.alert-info,
+.alert-success,
+.alert-warning,
 .alert-error {
-  background: color-mix(in oklch, var(--red) 15%, transparent);
-  border-color: var(--red);
-  color: var(--red);
+  background: color-mix(in oklch, var(---alert-color) 15%, transparent);
+  border-color: var(---alert-color);
+  color: var(---alert-color);
+  .alert-icon { color: var(---alert-color); }
 }
-.alert-error .alert-icon { color: var(--red); }
+
+.alert-info { ---alert-color: var(--blue); }
+.alert-success { ---alert-color: var(--green); }
+.alert-warning { ---alert-color: var(--peach); }
+.alert-error { ---alert-color: var(--red); }
 
 /* Dismissible Alert */
 .alert-dismissible {
