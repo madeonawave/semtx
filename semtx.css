@@ -109,6 +109,11 @@ body {
   transition: background var(--trans), color var(--trans);
 }
 
+/* HTML5 elements default block display */
+main, header, footer, nav, article, section, aside {
+  display: block;
+}
+
 a {
   color: var(--primary);
   text-decoration: none;
@@ -143,7 +148,6 @@ table {
 ul, ol {
   list-style-position: inside;
 }
-
 
 
 /* ============================================
@@ -358,14 +362,14 @@ ul, ol {
 }
 
 /* Section - vertical spacing + padding */
-.section {
+section {
   padding: var(--space-6) 0;
   border-bottom: var(--border-w) solid var(--border);
 }
 
 /* Section without border */
-.section-flat {
-  padding: var(--space-6) 0;
+section .flat {
+  border: none;
 }
 
 /* Container with max-width */
@@ -421,10 +425,6 @@ ul, ol {
 .uppercase { text-transform: uppercase; }
 .capitalize { text-transform: capitalize; }
 
-/* ============================================
-   SEMANTIC TEXT
-   ============================================ */
-
 /* Label - styled for form/instructional text */
 .label {
   font-size: var(--fs-sm);
@@ -472,18 +472,6 @@ ul, ol {
   font-size: var(--fs-lg);
   color: var(--text-sub);
 }
-
-/* Code block (wrapper) */
-.code-block {
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  padding: var(--space-4);
-  background: var(--bg-surface);
-  border-radius: var(--radius);
-}
-.tracking-wide { letter-spacing: 0.025em; }
-
-.leading-tight { line-height: var(--lh-tight); }
 
 /* Container */
 .container {
@@ -1211,7 +1199,7 @@ fieldset legend {
 
 
 /* Sidebar */
-.sidebar {
+aside {
   width: 280px;
   height: 100%;
   background: var(--bg-surface);
@@ -1220,14 +1208,14 @@ fieldset legend {
   overflow-y: auto;
 }
 
-.sidebar-nav {
+aside nav {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   list-style: none;
 }
 
-.sidebar-nav a {
+aside nav a {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -1411,26 +1399,26 @@ dialog.dialog-full {
   border-radius: var(--radius);
 }
 
-.table {
+table {
   width: 100%;
   border-collapse: collapse;
   font-size: var(--fs-sm);
 }
 
-.table th,
-.table td {
+table th,
+table td {
   padding: var(--space-3) var(--space-4);
   text-align: left;
   border-bottom: var(--border-w) solid var(--border);
 }
 
-.table th {
+table th {
   font-weight: 600;
   background: var(--bg-mantle);
   color: var(--text);
 }
 
-.table tr:last-child td {
+table tr:last-child td {
   border-bottom: none;
 }
 
@@ -1656,8 +1644,7 @@ hr {
   margin: var(--space-6) 0;
 }
 
-/* Prose (article wrapper) */
-.prose {
+article {
   max-width: 65ch;
   h1, h2, h3, h4 {
     margin-top: var(--space-8);
@@ -2192,7 +2179,6 @@ details {
 
 details[open] {
   padding-bottom: var(--space-4);
-
   summary::before { transform: rotate(90deg); }
 }
 
@@ -2216,38 +2202,4 @@ summary {
     transition: transform var(--trans-fast);
     color: var(--text-sub);
   }
-}
-
-/* ============================================
-   HTML5 SEMANTIC ELEMENTS
-   ============================================ */
-
-main {
-  display: block;
-}
-
-article, section, aside {
-  display: block;
-}
-
-header, footer, nav {
-  display: block;
-}
-
-nav {
-  /* Navigation defaults */
-}
-
-section {
-  /* Section defaults */
-}
-
-article {
-  /* Article - self-contained content */
-  padding: var(--space-4);
-}
-
-aside {
-  /* Aside - sidebar content */
-  padding: var(--space-4);
 }
